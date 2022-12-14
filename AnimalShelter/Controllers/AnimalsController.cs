@@ -16,8 +16,13 @@ namespace AnimalShelter.Controllers
 
     public ActionResult Index()
     {
-      List<Animal> model = _db.Items.ToList();
+      List<Animal> model = _db.Animals.ToList();
       return View(model);
+    }
+
+    public ActionResult Create()
+    {
+      return View();
     }
 
     [HttpPost]
@@ -30,7 +35,7 @@ namespace AnimalShelter.Controllers
 
     public ActionResult Details(int id)
     {
-      Animal thisAnimal = _db.Animals.FirstOrDefault(animal => animal.animalId == id);
+      Animal thisAnimal = _db.Animals.FirstOrDefault(animal => animal.Id == id);
       return View(thisAnimal);
     }
   }
